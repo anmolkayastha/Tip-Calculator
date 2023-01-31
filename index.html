@@ -12,33 +12,43 @@
     <title>Tip Calculator</title>
 </head>
 <body>
-    <div class="tip-calculator">
+    <div class="container">
+        <div class="tip-calculator">
 
-        <h1>Tip Calculator</h1>
-
-        <!-- Enter sub total here -->
-        <div class="bill">
-            <label>Bill subtotal</label>
-            <input type="number" id="bill">
+            <h1>Tip Calculator</h1>
+            
+            <!-- Enter sub total here -->
+            <div class="bill">
+                <label>Bill subtotal</label>
+                <input type="number" id="bill">
+            </div>
+            
+            <!-- Select Tip Percentage -->
+            <div class="tip-select-container">
+                <label>Select Tip</label>
+                <div class="tip-selection">
+                    <button>5%</button>
+                    <button>10%</button>
+                    <button>15%</button>
+                    <button>20%</button>
+                    <button class="custom">Custom</button>
+                </div>
+            </div>
+            
+            <div class="calculated-tip">
+                <div class="tip-amt">
+                    <label>Tip Amount</label>
+                    <div class="tip-amt-num">$0</div>
+                </div>
+            
+                <div class="total-amt">
+                    <label>Total</label>
+                    <div class="total-num">$0</div>
+                    <button class="reset">Reset</button>
+                </div>
+            </div>
+            
         </div>
-
-        <!-- Select Tip Percentage -->
-        <div class="tip">
-            <label>Select Tip</label>
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>20%</button>
-            <button class="custom">Custom</button>
-        </div>
-
-        <div class="calculated-tip">
-            <label>Tip Amount</label>
-            <div class="tip-amt">$0</div>
-            <label>Total</label>
-            <button class="reset">Reset</button>
-        </div>
-
     </div>
 
 </body>
