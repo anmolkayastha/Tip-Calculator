@@ -1,5 +1,6 @@
 // DOM Elements
 
+const billGroupEl = document.getElementById('bill-group');
 const billInputEl = document.getElementById('bill');
 
 // Take input from user
@@ -11,18 +12,27 @@ const billInputEl = document.getElementById('bill');
 billInputEl.addEventListener("keyup", function(event){
     event.preventDefault();
     if(event.key === 'Enter'){
-        let bill = billInputEl.value;
-        if (bill.match( /^[a-zA-Z]+$/)){
-            console.log("Error: Input has letters");
+        let billValue = billInputEl.value;
+        if (!billValue.match( /^[a-zA-Z]+$/)){
+            showErrorMsg();
         }
         else{
-            console.log(bill);
+            // return input as number
+            return parseFloat(billValue);
         }
 
         // console.log(typeof(billInputEl.value));
         // return billInputEl.value;
     }
 });
+
+function showErrorMsg(){
+    let span = document.createElement('span');
+    span.textContent = "Please enter a number";
+    span.setAttribute('class','error');
+    billGroupEl.appendChild(span);
+    console.log("function running");
+}
 
 // function getBillSubTotal(event){
 //     event.preventDefault();
