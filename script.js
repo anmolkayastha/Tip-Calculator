@@ -11,12 +11,18 @@ const billInputEl = document.getElementById('bill');
 
 billInputEl.addEventListener("keyup", function(event){
     event.preventDefault();
+    let fired = false;
     if(event.key === 'Enter'){
         let billValue = billInputEl.value;
-        if (!billValue.match( /^[a-zA-Z]+$/)){
+        // if (!billValue.match( /^[a-zA-Z]+$/)){
+        if (isNaN(parseFloat(billValue)) && fired === false){
             showErrorMsg();
+            fired = true;
         }
         else{
+            // Also remove error message
+            fired = false;
+            removeErrorMsg();
             // return input as number
             return parseFloat(billValue);
         }
@@ -30,8 +36,14 @@ function showErrorMsg(){
     let span = document.createElement('span');
     span.textContent = "Please enter a number";
     span.setAttribute('class','error');
+    span.setAttribute('id','error');
     billGroupEl.appendChild(span);
     console.log("function running");
+}
+
+function removeErrorMsg(){
+ let errorMsg = document.getElementById('error');
+   errorMsg.remove();
 }
 
 // function getBillSubTotal(event){
