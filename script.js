@@ -2,36 +2,45 @@
 
 const billGroupEl = document.getElementById('bill-group');
 const billInputEl = document.getElementById('bill');
+const tipAmtEl = document.getElementById('tip-amt-num');
+const totalAmtEl = document.getElementById('total-amt-num');
 
 // Take input from user
 // Validate input
     // Check if there are letters in input value
     // If yes, show an error message
     // If not, then take the input value 
+    
+// Flag for whether error message was displayed
+let fired = false;
 
+// When user presses enter, validate input
 billInputEl.addEventListener("keyup", function(event){
     event.preventDefault();
-    let fired = false;
     if(event.key === 'Enter'){
         let billValue = billInputEl.value;
-        // if (!billValue.match( /^[a-zA-Z]+$/)){
-        if (isNaN(parseFloat(billValue)) && fired === false){
-            showErrorMsg();
-            fired = true;
-        }
-        else{
-            // Also remove error message
-            fired = false;
-            removeErrorMsg();
-            // return input as number
-            return parseFloat(billValue);
-        }
-
-        // console.log(typeof(billInputEl.value));
-        // return billInputEl.value;
+        validateInput(billValue);
     }
 });
 
+function validateInput(billSubTotal){
+    if (isNaN(parseFloat(billSubTotal))){
+        if(!fired){
+            showErrorMsg();
+            fired = true;
+        }
+    }
+    // if input is okay
+    else{   
+        // Remove error message if it's there
+        if(fired === true){
+            removeErrorMsg();
+            fired = false;
+        }
+        // return input as number
+        return parseFloat(billSubTotal); 
+    }
+}
 function showErrorMsg(){
     let span = document.createElement('span');
     span.textContent = "Please enter a number";
