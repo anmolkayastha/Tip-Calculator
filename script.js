@@ -16,40 +16,56 @@ const tip_custom_El = document.getElementById('tip-custom');
 // Flag for whether error message was displayed
 let fired = false;
 
-// When user presses enter, validate input
-/*
-billInputEl.addEventListener("keyup", function(event){
-    event.preventDefault();
-    if(event.key === 'Enter'){
-        let billValue = billInputEl.value;
-        validateInput(billValue);
-    }
-});
-*/
 
-// When tip button is clicked
-    // Validate input
-    // Calculate tip
-    // Show total
-
+// 5% tip
 tip_5_El.addEventListener('click', function(event){
     if(validateInput(billInputEl.value)){
-        billSubTotal = parseFloat(billInputEl.value);
-        let tip_amt = billSubTotal * 0.05;
-        updateTipAmt(tip_amt);
-        updateTotalAmt(tip_amt, billSubTotal);
+        let tip_percentage = 5;
+        calculateTip(tip_percentage);
     }
 });
 
-function updateTipAmt(tip_amt){
-    tipAmtEl.innerHTML  = '$' + tip_amt.toFixed(2);
-}
+// 10% tip
+tip_10_El.addEventListener('click', function(event){
+    if(validateInput(billInputEl.value)){
+        let tip_percentage = 10;
+        calculateTip(tip_percentage);
+    }
+});
 
-function updateTotalAmt(tip_amt, subTotal){
-    let totalAmt = tip_amt + subTotal;
-    totalAmtEl.innerHTML = '$' + totalAmt.toFixed(2);
-}
+// 15% tip
+tip_15_El.addEventListener('click', function(event){
+    if(validateInput(billInputEl.value)){
+        let tip_percentage = 15;
+        calculateTip(tip_percentage);
+    }
+});
 
+// 20% tip
+tip_20_El.addEventListener('click', function(event){
+    if(validateInput(billInputEl.value)){
+        let tip_percentage = 20;
+        calculateTip(tip_percentage);
+    }
+});
+
+
+// Custom tip
+    // Use 
+    // Get value when user presses enter
+    // Call helper functions
+tip_custom_El.addEventListener('input', function(event){
+    console.log("Custom tip");
+
+});
+
+
+function calculateTip(tip_percentage){
+    billSubTotal = parseFloat(billInputEl.value);
+        let tip_amt = billSubTotal * tip_percentage / 100;
+        updateTipAmt(tip_amt);
+        updateTotalAmt(tip_amt, billSubTotal);
+}
     
 
 // Check whether input is a number and display erorr messages if needed
@@ -88,10 +104,14 @@ function removeErrorMsg(){
    errorMsg.remove();
 }
 
-// function getBillSubTotal(event){
-//     event.preventDefault();
-//     if(event.keyCode == 13){
-//         console.log(billInputEl.value);
-//         // return billInputEl.value;
-//     }
-// }
+// Change HTML element to display tip amount
+function updateTipAmt(tip_amt){
+    tipAmtEl.innerHTML  = '$' + tip_amt.toFixed(2);
+}
+
+// Change HTML element to display total with tip
+function updateTotalAmt(tip_amt, subTotal){
+    let totalAmt = tip_amt + subTotal;
+    totalAmtEl.innerHTML = '$' + totalAmt.toFixed(2);
+}
+

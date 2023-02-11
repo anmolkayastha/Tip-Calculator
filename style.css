@@ -65,7 +65,7 @@ label{
 
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
 input:focus{
     outline: none;
@@ -76,8 +76,8 @@ input:focus{
     display:flex;
     flex-wrap: wrap;
     /* background-color: #333; */
-    justify-content: space-evenly;
-    /* align-content: space-around; */
+    /* justify-content: space-evenly; */
+    justify-content: space-around;
     /* width: 100%; */
     padding: 1rem 0.75rem;
 }
@@ -96,14 +96,14 @@ input:focus{
     background-color: #27251F;
 }
 
-/* .custom-btn{
+.tip-custom{
+    text-align: center;
     background-color: #000;
     color: #fff;
-    padding: 0.30rem 1rem;
-    margin: 5px; 
-    border: white solid 1px;
+    padding: 8px 0; 
+    margin: 5px;
     border-radius: 5px;
-} */
+}
 
 .calculated-tip
 {
@@ -135,6 +135,14 @@ input:focus{
     margin-top: 1.5rem;
     padding: 0.50rem 1rem;
     border-radius: 5px;
+}
+
+.error
+{
+    /* width: 80%; */
+    padding: 0.5rem 0rem;
+    color: red;
+    font-weight: bold;
 }
 
 

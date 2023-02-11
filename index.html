@@ -18,7 +18,7 @@
             <h1>Tip Calculator</h1>
             
             <!-- Enter sub total here -->
-            <div class="bill">
+            <div class="bill" id="bill-group">
                 <label>Bill subtotal</label>
                 <input type="number" id="bill">
             </div>
@@ -27,24 +27,25 @@
             <div class="tip-select-container">
                 <label>Select Tip</label>
                 <div class="tip-selection">
-                    <button class="percentage-btn">5%</button>
-                    <button class="percentage-btn">10%</button>
-                    <button class="percentage-btn">15%</button>
-                    <button class="percentage-btn">20%</button>
-                    <button class="percentage-btn">Custom</button>
+                    <button class="percentage-btn" id="tip-5">5%</button>
+                    <button class="percentage-btn" id="tip-10">10%</button>
+                    <button class="percentage-btn" id="tip-15">15%</button>
+                    <button class="percentage-btn" id="tip-20">20%</button>
+                    <!-- <button class="percentage-btn" id="tip-custom">Custom</button> -->
+                    <input type="number" class="tip-custom" id="tip-custom" placeholder="CUSTOM">
                 </div>
             </div>
             
             <div class="calculated-tip">
                 <div class="tip-amt">
                     <label>Tip Amount</label>
-                    <div class="tip-amt-num">$0</div>
+                    <div class="tip-amt-num" id="tip-amt-num">$0.00</div>
                 </div>
             
                 <div class="total-amt">
                     <label>Total</label>
-                    <div class="total-num">$0</div>
-                    <button class="reset">Reset</button>
+                    <div class="total-amt-num" id="total-amt-num">$0.00</div>
+                    <button class="reset" id="reset">Reset</button>
                 </div>
             </div>
             
