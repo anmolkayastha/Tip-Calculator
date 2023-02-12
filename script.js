@@ -4,12 +4,15 @@ const billGroupEl = document.getElementById('bill-group');
 const billInputEl = document.getElementById('bill');
 const tipAmtEl = document.getElementById('tip-amt-num');
 const totalAmtEl = document.getElementById('total-amt-num');
+const resetBtnEl = document.getElementById('reset');
 
 const tip_5_El = document.getElementById('tip-5');
 const tip_10_El = document.getElementById('tip-10');
 const tip_15_El = document.getElementById('tip-15');
 const tip_20_El = document.getElementById('tip-20');
 const tip_custom_El = document.getElementById('tip-custom');
+
+
 
 
     
@@ -51,15 +54,28 @@ tip_20_El.addEventListener('click', function(event){
 
 
 // Custom tip
-    // Use 
-    // Get value when user presses enter
-    // Call helper functions
-tip_custom_El.addEventListener('input', function(event){
-    console.log("Custom tip");
+tip_custom_El.addEventListener('keypress', function(event){
+    if(event.key === "Enter"){
+        event.preventDefault();
+        if(validateInput(billInputEl.value)){
+            const custom_tip_percentage = parseFloat(tip_custom_El.value);
+            calculateTip(custom_tip_percentage);
+        }
+    }
+});
 
+// Reset
+    // Clear input fields
+    // Set tip amount and total to zero
+resetBtnEl.addEventListener('click', function(event){  
+    billInputEl.value = '';
+    tip_custom_El.value = '';
+    tipAmtEl.innerHTML = '$0.00';
+    totalAmtEl.innerHTML = '$0.00';
 });
 
 
+// Calculate tip
 function calculateTip(tip_percentage){
     billSubTotal = parseFloat(billInputEl.value);
         let tip_amt = billSubTotal * tip_percentage / 100;
@@ -95,7 +111,6 @@ function showErrorMsg(){
     span.setAttribute('class','error');
     span.setAttribute('id','error');
     billGroupEl.appendChild(span);
-    console.log("function running");
 }
 
 // Remove error message
